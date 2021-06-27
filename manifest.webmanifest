@@ -4,8 +4,8 @@
     "theme_color": "#363636",
     "background_color": "#363636",
     "display": "minimal-ui",
-    "scope": "/",
-    "start_url": "https://joaosousa1.github.io/encontra-palavras/",
+    "scope": "/encontra-palavras/",
+    "start_url": "/encontra-palavras/index.html",
     "icons": [
         {
           "src": "icon.png",
