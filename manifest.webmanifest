@@ -5,7 +5,7 @@
     "background_color": "#363636",
     "display": "minimal-ui",
     "scope": "/",
-    "start_url": "/",
+    "start_url": "https://joaosousa1.github.io/encontra-palavras/",
     "icons": [
         {
           "src": "icon.png",
