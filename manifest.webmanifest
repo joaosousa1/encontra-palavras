@@ -3,7 +3,7 @@
     "short_name": "EncontraPalavras",
     "theme_color": "#363636",
     "background_color": "#363636",
-    "display": "minimal-ui",
+    "display": "standalone",
     "scope": "/encontra-palavras/",
     "start_url": "/encontra-palavras/index.html",
     "icons": [
