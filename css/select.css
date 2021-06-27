@@ -1,0 +1,37 @@
+/* João Sousa 2021
+tuxmind.blogspot.com */
+.select-css {
+	width: 100%;
+	color: var(--letra-color);
+    padding: 8px 30px 8px 10px;
+	margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid var(--panel-color);
+    outline: none;
+    border-radius: 10px;
+    transition-duration: 0.4s;
+	display: block;
+    border: 2px solid var(--panel-color);
+	-moz-appearance: none;
+	-webkit-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 15.875 13.229' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='translate(149.16 -125.56)'%3E%3Cpath transform='matrix(.25414 0 0 .24455 -111.25 104.85)' d='m-149.16 84.688 62.466-2e-6 -31.233 54.097z' fill='%234a74bd' stroke-dashoffset='13.228' stroke-linecap='round' stroke-miterlimit='10' stroke-width='.1' style='paint-order:normal'%3E/&gt;%3C/path%3E%3C/g%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right .7em top 50%, 0 0;
+	background-size: .65em auto, 100%;
+}
+
+.select-css::-ms-expand {
+	display: none;
+}
+.select-css:hover {
+  border-color: var(--botao-hover);
+}
+.select-css:focus {
+	box-shadow: 0 0 1px 3px var(--botao-color);
+	box-shadow: 0 0 0 3px -moz-mac-focusring;
+	outline: none;
+}
+.select-css option {
+	font-family: 'Poppins';
+}

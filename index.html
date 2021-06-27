@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt">
+<!-- João Sousa 2021
+tuxmind.blogspot.com -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" type="image/png" href="icon.png"/>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="dicionario.js" defer></script>
+    <title>Encontra palavras</title>
+</head>
+
+<body>
+
+
+    <div class="caixaTop">
+        <h1>Encontra Palavras</h1>
+        <p>Insira as letras no campo em baixo e click no botão "Pesquisar" ou use a tecla enter.</p>
+        <input type="text" name="" id="letras" placeholder="insira aqui as letras">
+
+        <div id="bt" class="botao" onclick="pesquisa()">Pesquisar</div>
+
+    </div>
+
+    <div class="caixa">
+
+        <!-- <div id="spinner" style="display: none; margin-top: 30px;">
+            <div class="spinner"></div>
+        </div> -->
+
+
+        <div class="grid-container" id="grid"></div>
+
+    </div>
+
+</body>
+
+<script>
+
+
+    // Get the input field
+    //click enter depois de inserir texto no input
+    var letras = document.getElementById("letras");
+
+    // Execute a function when the user releases a key on the keyboard
+    letras.addEventListener("keyup", function (event) {
+        // Number 13 is the "Enter" key on the keyboard
+        if (event.keyCode === 13) {
+            // Cancel the default action, if needed
+            event.preventDefault();
+            // Trigger the button element with a click
+            document.getElementById("bt").click();
+
+            //tirar foco depois de pressionar enter para remover teclado virtual em tablets e telemoveis
+            letras.blur()
+        }
+    });
+
+
+    var lista = document.getElementById("grid");
+    var spinner = document.getElementById("spinner");
+
+    var resultado = [];
+
+    function encontraPalavras(palavra, letras) {
+
+        if (palavra.length > 2) { // se a palavra tem menos de 3 letras é descartada
+
+            var arrayLetras = letras.split("");
+
+            for (var i = 0; i < palavra.length; i++) {
+
+                //retoma o index da letra na arrayLetras
+                //se não encontar a letra retoma -1 
+                var iLetra = arrayLetras.indexOf(palavra[i].toLowerCase()); //toLowerCase para encontrar também palavras que começam por maiúscula
+
+                if (iLetra >= 0) {  //
+                    //remove a letra da array par ela não poder ser usada outra vez
+                    arrayLetras.splice(iLetra, 1);
+
+                } else { //não encontrou a letra retoma -1
+                    //para o loop
+                    break;
+                    //return false;
+                }
+
+                if (palavra.length - 1 === i) {
+                    //return true;
+                    console.log(palavra);
+                    resultado.push(palavra);
+
+                }
+
+            }
+
+        }
+
+    }
+
+
+    function pesquisa() { //TODO add loading... e callback
+
+        //spinner.style.display = "block";
+        resultado = [];
+        lista.innerHTML = "";
+        var letras = document.getElementById("letras").value;
+
+        if (letras.length < 3 || letras.length > 10) { //limitar o numero de letras 10
+            alert("ERRO: Insira no mínimo 3 letras e no máximo 10.")
+        } else {
+
+
+            for (var i = 0; i < dicionario.length; i++) {
+                encontraPalavras(dicionario[i], letras.toLowerCase());
+            }
+
+
+
+            console.log(resultado);
+
+            //ordem crescente (tamanho em numero de letras)
+            resultado.sort(function (a, b) { //por ordem
+                // ascendente  -> a.length - b.length
+                // crescente -> b.length - a.length
+                return a.length - b.length
+            });
+
+
+            //remove duplicados da array com o Set
+            resultado = [...new Set(resultado)];
+
+            for (let index = 0; index < resultado.length; index++) {
+
+                var e = document.createElement("div");
+                e.classList.add("grid-item");
+                e.innerHTML = resultado[index];
+                lista.appendChild(e);
+
+            }
+        }
+
+
+    }
+
+</script>
+
+
+</html>
